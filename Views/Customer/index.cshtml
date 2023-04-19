@@ -1,0 +1,64 @@
+@using profisee_project.Models
+@{
+    var customers = ViewBag.Customers;
+}
+
+ <table id="customers-grid">
+                    <tr>
+                        <th class = "medium-column">Customer</th>
+                        <th class = "large-column">Address</th>
+                        <th class = "small-column">Phone Number</th>
+                        <th class = "medium-column">Start Date</th>
+                        
+                       
+                    </tr>
+                    @if(customers != null){
+                      @foreach(Customer customer in customers){
+                            <tr >
+                              <td class = "medium-column">@customer.LastName, @customer.FirstName </td>
+                              <td class = "large-column">@customer.Address</td>
+                              <td class = "small-column">@customer.PhoneNumber.Substring(0,3) - @customer.PhoneNumber.Substring(3,3) - @customer.PhoneNumber.Substring(6,4)</td>
+                              <td class = "medium-column">@customer.StartDate</td>
+                             
+
+                            </tr>
+                      }
+                    }
+    </table>
+
+    <style>
+#customers-grid {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers-grid td, #customers-grid th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers-grid tr:nth-child(even){background-color: #f2f2f2;}
+
+@* #customers-grid tr:hover {background-color: #ddd;} *@
+
+#customers-grid th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4ebdbf;
+  color: white;
+}
+
+.small-column{
+width: 6%;
+}
+
+.medium-column{
+width: 12%;
+}
+.large-column{
+width: 20%;
+}
+
+</style>

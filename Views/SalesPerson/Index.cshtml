@@ -1,0 +1,71 @@
+@using profisee_project.Models
+@{
+    var salesPeople = ViewBag.SalesPeople;
+}
+<div>
+  <a asp-controller="SalesPerson" asp-action="New" asp-route-id = "">Add a New Sales Person to the Team</a>
+</div>
+ <table id="salespeople-grid">
+                    <tr>
+                        <th class = "medium-column">Name</th>
+                        <th class = "large-column">Address</th>
+                        <th class = "small-column">Phone Number</th>
+                        <th class = "medium-column">Start Date</th>
+                        <th class = "medium-column">Termination Date</th>
+                       
+                    </tr>
+                    @if(salesPeople != null){
+                      @foreach(SalesPerson person in salesPeople){
+                        
+                            <tr >
+                              <td class = "medium-column"><a asp-controller="SalesPerson" asp-action="Update" asp-route-salesPersonId = "@person.salesPersonId" >@person.LastName, @person.FirstName</a></td>
+                              <td class = "large-column">@person.Address</td>
+                              <td class = "small-column">@person.PhoneNumber</td>
+                              <td class = "medium-column">@person.StartDate</td>
+                              <td class = "medium-column">@person.TerminationDate</td>
+                              
+
+                            </tr>
+                      }
+                    }
+    </table>
+
+
+
+    <style>
+#salespeople-grid {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#salespeople-grid td, #salespeople-grid th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#salespeople-grid tr:nth-child(even){background-color: #f2f2f2;}
+
+@* #salespeople-grid tr:hover {background-color: #ddd;} *@
+
+#salespeople-grid th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4ebdbf;
+  color: white;
+}
+
+.small-column{
+width: 6%;
+}
+
+.medium-column{
+width: 10%;
+}
+.large-column{
+width: 20%;
+}
+
+
+</style>

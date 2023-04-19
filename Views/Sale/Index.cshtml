@@ -1,0 +1,76 @@
+@using profisee_project.Models
+@{
+  var salesInDetails = ViewBag.SalesInDetails;
+}
+
+<div>
+  <a asp-controller="Sale" asp-action="New" asp-route-id = "">Create a New Sale</a>
+</div>
+
+<table id="products-grid">
+                    <tr>
+                        <th class = "medium-column">Product Name and Manufacturer</th>
+                        <th class = "small-column">Customer</th>
+                        <th class = "small-column">Sale Date</th>
+                        <th class = "small-column">Sale Price($)</th>
+                        <th class = "small-column">Sales Person</th>
+                        <th class = "small-column">Sale Commission($)</th>
+                       
+                    </tr>
+                    @if(salesInDetails != null){
+                      @foreach(SalesInDetails sale in salesInDetails){
+                            <tr >
+                              <td class = "medium-column">@sale.salesProductName</td>
+                              <td class = "small-column">@sale.salesInDetailsCustomerName</td>
+                              <td class = "small-column">@sale.salesInDetailsDate</td>
+                              <td class = "small-column-number">@sale.salePrice</td>
+                              <td class = "small-column">@sale.salesInDetailsSalesPersonName</td>
+                              <td class = "small-column-number">@Math.Round(sale.salePersonCommission, 2)</td>
+                            </tr>
+
+                      }
+                    }
+    </table>
+
+    <style>
+#products-grid {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#products-grid td, #products-grid th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#products-grid tr:nth-child(even){background-color: #f2f2f2;}
+
+@* #products-grid tr:hover {background-color: #ddd;} *@
+
+#products-grid th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4ebdbf;
+  color: white;
+}
+
+.small-column{
+    width: 6%;
+}
+.medium-column{
+    width: 12%;
+}
+.small-column-number{
+    width: 6%;
+    text-align: right;
+}
+.medium-column-number{
+    width: 10%;
+    text-align: right;
+}
+</style>
+
+
+

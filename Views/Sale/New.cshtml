@@ -1,0 +1,68 @@
+@using profisee_project.Models
+@{
+    var products = ViewBag.Products;
+    var customers = ViewBag.Customers ;
+    var salesPeople =  ViewBag.SalesPeople;
+}
+
+
+
+
+<div style="width: 80rem;">
+        <form style="width: 98%;" asp-controller="Sale" asp-action= "Save">
+            <div style = "width: 98%;display: flex;">
+                <input style = "width: 24%;margin: 0.5%;" type="date" id="SaleDate" name="SaleDate" placeholder = "Sale Date" required><br><br>
+                        
+                        <select class = "product-dropdown" name="productId" placeholder = "Products" required>
+                            <option value="" disabled selected hidden>Products</option>
+
+                            @{if (products != null)
+                                foreach(Product product in products){
+                                    <option value = "@product.productId">@product.Name by @product.Manufacturer</option>
+                                }    
+                            }
+                </select>
+
+                <select class = "product-dropdown" name="salesPersonId" placeholder = "Sales Associates" required>
+                            <option value="" disabled selected hidden>Sales Associates</option>
+
+                            @{if (salesPeople != null)
+                                foreach(SalesPerson salesPerson in salesPeople){
+                                    <option value = "@salesPerson.salesPersonId">@salesPerson.LastName, @salesPerson.FirstName</option>
+                                }    
+                            }
+                </select>
+
+                <select class = "product-dropdown" name="customerId" placeholder = "Customers" required>
+                            <option value="" disabled selected hidden>Customers</option>
+
+                            @{if (customers != null)
+                                foreach(Customer customer in customers){
+                                    <option value = "@customer.customerId">@customer.LastName, @customer.FirstName</option>
+                                }    
+                            }
+                </select>
+
+                <input style = "width: 25%;margin: 0.5%;" type="number" id="SalePrice" step=0.01 name="SalePrice" placeholder = "Sale Price" required><br><br>
+
+            </div>
+            <div style = "width: 98%;display: flex;">
+                
+      
+            </div>
+            <div style = "width: 99%;">
+                <input style = "width: 98%;margin: 0.5%;" type="submit" value="Create a New Sale">
+            </div>
+        </form>
+</div>
+
+
+<style>
+    .date-label{
+        font-size: 30px;
+    }
+    .product-dropdown{
+        width: 25.75%;
+        margin: 0.5%;
+    }
+</style>
