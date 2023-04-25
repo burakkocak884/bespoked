@@ -14,8 +14,6 @@
                         <th class = "large-column">Address</th>
                         <th class = "small-column">Phone Number</th>
                         <th class = "medium-column">Start Date</th>
-                        
-                       
                     </tr>
                     @if(customers != null){
                       @foreach(Customer customer in customers){
@@ -24,8 +22,6 @@
                               <td class = "large-column">@customer.Address</td>
                               <td class = "small-column">(@customer.PhoneNumber.Substring(0,3))  @customer.PhoneNumber.Substring(3,3) @customer.PhoneNumber.Substring(6,4)</td>
                               <td class = "medium-column">@customer.StartDate.ToString("MMM dd yyyy")</td>
-                             
-
                             </tr>
                       }
                     }

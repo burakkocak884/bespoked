@@ -16,7 +16,6 @@
                         <th class = "medium-column">Sales Person</th>
                         <th class = "small-column">Sale Price($)</th>
                         <th class = "small-column">Sale Commission($)</th>
-                       
                     </tr>
                     @if(salesInDetails != null){
                       @foreach(SalesInDetails sale in salesInDetails){
@@ -28,7 +27,6 @@
                               <td class = "small-column-number">@sale.salePrice</td>
                               <td class = "small-column-number">@Math.Round(sale.salePersonCommission, 2)</td>
                             </tr>
-
                       }
                     }
     </table>
