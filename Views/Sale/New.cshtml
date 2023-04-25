@@ -3,12 +3,16 @@
     var products = ViewBag.Products;
     var customers = ViewBag.Customers ;
     var salesPeople =  ViewBag.SalesPeople;
-    string msg = ViewBag.ErrorMessage;
+    List<string> errorMessages = ViewBag.ErrorMessages;
 }
 
-@{if(!string.IsNullOrEmpty(msg)){
+@{if(errorMessages != null && errorMessages.Count > 0){
         <div style="width: 80rem;">
-            <p style = "color: red;">@msg</p>
+
+            @{foreach(string msg in errorMessages){
+                <p><span style = "color: red;">Error : </span>@msg</p>
+            }}
+            
         </div>
     }
 }

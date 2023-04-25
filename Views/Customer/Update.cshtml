@@ -3,6 +3,7 @@
 
 @{
     var customer = ViewBag.Customer;
+    var customerStartDate = customer.StartDate.ToString("yyyy-MM-dd");
 }
 
 
@@ -16,8 +17,8 @@
                 <input style = "width: 44%;margin: 0.5%;" type="text" id="Address" name="Address" value = "@customer.Address" placeholder = "Address" required><br><br>
                 <input style = "width: 13%;margin: 0.5%;" type="text" id="PhoneNumber" name="PhoneNumber" maxlength="10" minlength="10"  value = "@customer.PhoneNumber" placeholder = "Phone Number" required><br><br>
                 <label class = "date-label" for="StartDate">Start Date</label>
-                <input style = "width: 13%;margin: 0.5%;" type="date" id="StartDate" name="StartDate" value = "@customer.StartDate" placeholder = "Start Date" required><br><br>
-                <input  type="hidden" id="customerId" name="customerId" >
+                <input style = "width: 13%;margin: 0.5%;" type="date" id="StartDate" name="StartDate" value = "@customerStartDate" placeholder = "Start Date" required><br><br>
+                <input  type="hidden" id="customerId" name="customerId" value="@customer.customerId" >
             </div>
             <div style = "width: 99%;">
                 <input style = "width: 98%;margin: 0.5%;" type="submit" value="Update Customer Information">

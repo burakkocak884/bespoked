@@ -29,7 +29,7 @@ namespace profisee_project.Controllers
             string quarterDescription = string.Empty;
             string reportYear = string.IsNullOrEmpty(year)? currentTime.Year.ToString() : year;
 
-            int quarter = (selectedQuarter > 0) ? selectedQuarter : (Convert.ToInt32(currentTime.AddMonths(-3).Month) + 2)/3;
+            int quarter = (selectedQuarter > 0) ? selectedQuarter : ((Convert.ToInt32(currentTime.AddMonths(-3).Month) + 2)/3)+1;
             
             
             switch(quarter){

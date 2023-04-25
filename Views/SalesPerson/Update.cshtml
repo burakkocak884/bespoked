@@ -1,6 +1,8 @@
 @using profisee_project.Models
 @{
     var person = ViewBag.Person;
+    var personStartDate = ViewBag.Person.StartDate.ToString("yyyy-MM-dd");
+    var personTerminationDate = (ViewBag.Person.TerminationDate.ToString("yyyy-MM-dd") != "0001-01-01")? ViewBag.Person.TerminationDate.ToString("yyyy-MM-dd") : null;
 }
 
 
@@ -17,9 +19,9 @@
             <div style = "width: 98%;display: flex;">
                 <input style = "width: 19%;margin: 0.5%;" type="text" id="PhoneNumber" name="PhoneNumber" maxlength="10" minlength="10" value = '@person.PhoneNumber' placeholder = "Phone Number" required><br><br>
                 <label class = "date-label" for="StartDate">Start Date</label>
-                <input style = "width: 24%;margin: 0.5%;" type="date" id="StartDate" name="StartDate" placeholder = "Start Date"  value = '@person.StartDate.ToString()' required><br><br>
+                <input style = "width: 24%;margin: 0.5%;" type="date" id="StartDate" name="StartDate" placeholder = "Start Date"  value = '@personStartDate' required><br><br>
                 <label class = "date-label" for="TerminationDate">Termination Date</label>
-                <input style = "width: 24%;margin: 0.5%;" type="date" id="TerminationDate" name="TerminationDate" value = '@person.TerminationDate.ToString()' placeholder = "Termination Date" ><br><br>
+                <input style = "width: 24%;margin: 0.5%;" type="date" id="TerminationDate" name="TerminationDate" value = '@personTerminationDate' placeholder = "Termination Date" ><br><br>
 
                 <input  type="hidden" id="managerId" name="managerId" value="1"> 
                 <input  type="hidden" id="salesPersonId" name="salesPersonId" value="@person.salesPersonId">
