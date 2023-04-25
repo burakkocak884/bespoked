@@ -1,0 +1,36 @@
+@{
+    string msg = ViewBag.Message;
+}
+
+@{if(!string.IsNullOrEmpty(msg)){
+    <div style="width: 80rem;">
+         <p style = "color: red;">@msg</p>
+    </div>
+}
+}
+
+
+<div style="width: 80rem;">
+        <form style="width: 98%;" asp-controller="Customer" asp-action= "Save">
+            <div style = "width: 98%;display: flex;">
+                <input style = "width: 10%;margin: 0.5%;" type="text" id="FirstName" name="FirstName" placeholder = "First Name" required><br><br>
+                <input style = "width: 10%;margin: 0.5%;" type="text" id="LastName" name="LastName" placeholder = "Last Name" required><br><br>
+                <input style = "width: 44%;margin: 0.5%;" type="text" id="Address" name="Address" placeholder = "Address" required><br><br>
+                <input style = "width: 13%;margin: 0.5%;" type="text" id="PhoneNumber" name="PhoneNumber" maxlength="10" minlength="10" placeholder = "Phone Number" required><br><br>
+                <label class = "date-label" for="StartDate">Start Date</label>
+                <input style = "width: 13%;margin: 0.5%;" type="date" id="StartDate" name="StartDate" placeholder = "Start Date" required><br><br>
+            </div>
+                
+            
+            <div style = "width: 99%;">
+                <input style = "width: 98%;margin: 0.5%;" type="submit" value="Add a New Customer">
+            </div>
+        </form>
+</div>
+
+
+<style>
+    .date-label{
+        font-size: 20px;
+    }
+</style>

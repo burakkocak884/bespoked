@@ -27,7 +27,7 @@ namespace profisee_project.Controllers
             }
         }
 
-        public IActionResult Index(int userId)
+        public IActionResult Index()
         {
             ViewBag.Products = GetProducts<Product>().OrderBy(product => product.Name);
             return View();

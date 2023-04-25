@@ -14384,13 +14384,18 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/burakkocak/Development/profisee-project/Views/Product/update.cshtml",
-      "TargetPath": "Views\\Product\\update.cshtml",
+      "FilePath": "/Users/burakkocak/Development/profisee-project/Views/Product/Update.cshtml",
+      "TargetPath": "Views\\Product\\Update.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/burakkocak/Development/profisee-project/Views/Product/index.cshtml",
-      "TargetPath": "Views\\Product\\index.cshtml",
+      "FilePath": "/Users/burakkocak/Development/profisee-project/Views/Customer/New.cshtml",
+      "TargetPath": "Views\\Customer\\New.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/burakkocak/Development/profisee-project/Views/Product/Index.cshtml",
+      "TargetPath": "Views\\Product\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14424,11 +14429,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/burakkocak/Development/profisee-project/Views/SalesPerson/Save.cshtml",
-      "TargetPath": "Views\\SalesPerson\\Save.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/Users/burakkocak/Development/profisee-project/Views/Home/Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
@@ -14451,6 +14451,11 @@
     {
       "FilePath": "/Users/burakkocak/Development/profisee-project/Views/CommissionReport/Index.cshtml",
       "TargetPath": "Views\\CommissionReport\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/burakkocak/Development/profisee-project/Views/Customer/Update.cshtml",
+      "TargetPath": "Views\\Customer\\Update.cshtml",
       "FileKind": "mvc"
     }
   ],

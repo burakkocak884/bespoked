@@ -39,38 +39,66 @@ namespace profisee_project.Controllers
                 return _dbContext.Set<SalesPerson>().ToList();
             }
         }
+
+         public List<Discount> GetDiscounts<Discount>() where Discount : class
+        {  
+            {
+                return _dbContext.Set<Discount>().ToList();
+            }
+        }
         
         public IActionResult Index()
         {
-            string salesInDetailsQuery = "SELECT sale.\"saleId\" AS salesInDetailsId, sale.\"SaleDate\" AS SalesInDetailsDate " +
-                                            ",sale.\"SalePrice\",sale.\"productId\" AS salesInDetailsProductId ,product.\"Name\" ||' by '||product.\"Manufacturer\" AS SalesProductName " +
-                                            ",sale.\"customerId\" AS salesInDetailsCustomerId, customer.\"LastName\" ||', '|| customer.\"FirstName\" AS SalesInDetailsCustomerName " +
-                                            ",sale.\"salesPersonId\" AS salesPersonId,salesPerson.\"LastName\" ||', '|| salesPerson.\"FirstName\" AS SalesInDetailsSalesPersonName " +
-                                            ",(sale.\"SalePrice\" - product.\"PurchasePrice\") * (product.\"CommissionPercentage\" / 100) AS SalePersonCommission " +
+            string salesInDetailsQuery = "SELECT sale.\"saleId\" AS salesInDetailsId, TO_CHAR(sale.\"SaleDate\" :: DATE, 'Mon dd, yyyy') AS SalesInDetailsDate " +
+                                                ",sale.\"SalePrice\",sale.\"productId\" AS salesInDetailsProductId ,product.\"Name\" AS SalesProductName " +
+                                                ",sale.\"customerId\" AS salesInDetailsCustomerId, customer.\"LastName\" ||', '|| customer.\"FirstName\" AS SalesInDetailsCustomerName " +
+                                                ",sale.\"salesPersonId\" AS salesPersonId,salesPerson.\"LastName\" ||', '|| salesPerson.\"FirstName\" AS SalesInDetailsSalesPersonName " +
+                                                ",sale.\"SaleCommission\" AS SalePersonCommission " +
                                             "FROM \"Sales\" sale " +
                                             "JOIN \"Products\" product on product.\"productId\" = sale.\"productId\" " +
                                             "JOIN \"Customers\" customer ON customer.\"customerId\" = sale.\"customerId\" " +
-                                            "JOIN \"SalesPeople\" salesPerson ON salesPerson.\"salesPersonId\" = sale.\"salesPersonId\" ORDER BY sale.\"SaleDate\" DESC ";
+                                            "JOIN \"SalesPeople\" salesPerson ON salesPerson.\"salesPersonId\" = sale.\"salesPersonId\" " +
+                                            "ORDER BY sale.\"SaleDate\" DESC , salesPerson.\"LastName\" ASC";
 
             
             ViewBag.SalesInDetails =  _dbContext.SalesInDetails.FromSqlRaw(salesInDetailsQuery).ToList();
-             
             return View();
         }
 
-         public IActionResult New()
+        public IActionResult New(string msg)
         {
             ViewBag.Products = GetProducts<Product>().OrderBy(product => product.Name);
             ViewBag.Customers = GetCustomers<Customer>();
             ViewBag.SalesPeople = GetSalesPeople<SalesPerson>();
+            ViewBag.Discounts = GetDiscounts<Discount>();
+            ViewBag.ErrorMessage = msg; 
+
             return View();
         }
 
         public IActionResult Save(Sale sale)
         {
-            _dbContext.Sales.Add(sale);
-            _dbContext.SaveChanges();
-            return RedirectToAction("Index");
+            Product soldProductFromDB = _dbContext.Products.ToList().Find(p => p.productId == sale.productId);
+            string errorMessage = string.Empty;
+            if(soldProductFromDB.QuantityOnHand > 0){
+                Discount currentDiscount = _dbContext.Discounts.ToList().Find(d => d.productId == sale.productId);
+                if(currentDiscount != null){
+                    sale.SalePrice = sale.SalePrice * ((100 - currentDiscount.DiscountPercentage) / 100);
+                }
+                sale.SaleCommission = (sale.SalePrice - soldProductFromDB.PurchasePrice) * (soldProductFromDB.CommissionPercentage / 100);
+                _dbContext.Sales.Add(sale);
+                _dbContext.SaveChanges();
+                soldProductFromDB.QuantityOnHand  -= 1;
+                _dbContext.Attach(soldProductFromDB);
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                errorMessage = string.Format("Quantity of {0} is currently Zero. Sale is Unsucessful.",soldProductFromDB.Name);
+                return RedirectToActionPermanent("New", new{msg = errorMessage});
+            }
+           
         }
         
     }

@@ -65,7 +65,6 @@
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Sale/index.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/SalesPerson/Index.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/SalesPerson/New.cshtml.g.cs
-/Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/SalesPerson/Save.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Shared/Error.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_Layout.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs
@@ -81,8 +80,10 @@
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/SalesPerson/Update.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Product/Update.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Product/New.cshtml.g.cs
+/Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/CommissionReport/Index.cshtml.g.cs
+/Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Customer/New.cshtml.g.cs
+/Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Customer/Update.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/profisee-project.csproj.AssemblyReference.cache
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/profisee-project.GeneratedMSBuildEditorConfig.editorconfig
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/profisee-project.csproj.CoreCompileInputs.cache
-/Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/CommissionReport/Index.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/profisee-project.genruntimeconfig.cache

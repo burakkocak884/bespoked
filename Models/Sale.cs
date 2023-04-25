@@ -9,6 +9,7 @@ namespace profisee_project.Models
         public double SalePrice {get;set;}
         public int salesPersonId {get;set;}
         public int customerId {get;set;}
+        public double SaleCommission {get; set;}
         public int productId {get;set;}
     }
 }

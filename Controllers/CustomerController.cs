@@ -31,5 +31,42 @@ namespace profisee_project.Controllers
             ViewBag.Customers = GetCustomers<Customer>().OrderBy(customer => customer.LastName);
             return View();
         }
+
+        public IActionResult New(string msg){
+            ViewBag.Message = msg;
+            return View();
+        }
+
+        public IActionResult Save(Customer customer){
+
+            string errorMessage = string.Empty;
+            Customer duplicateCustomer = _dbContext.Customers.ToList().Find(c => c.PhoneNumber == customer.PhoneNumber);
+            if(duplicateCustomer == null){
+                _dbContext.Customers.Add(customer);
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else{
+                errorMessage =  string.Format("{0} {1} with  Phone Number: {2} already exists in System. Please update the Phone Number",duplicateCustomer.FirstName, duplicateCustomer.LastName, duplicateCustomer.PhoneNumber);
+                return RedirectToActionPermanent("New", new{msg = errorMessage});            }
+            
+            
+            
+        }
+
+        public IActionResult Update(int customerId){
+        
+            ViewBag.Customer = _dbContext.Customers.ToList().Find(c => c.customerId == customerId);
+            return View();
+        }
+        public IActionResult UpdateRecord(Customer customer){
+            
+            _dbContext.Update(customer);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+            
+        }
+
+        
     }
 }

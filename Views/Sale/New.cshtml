@@ -3,6 +3,14 @@
     var products = ViewBag.Products;
     var customers = ViewBag.Customers ;
     var salesPeople =  ViewBag.SalesPeople;
+    string msg = ViewBag.ErrorMessage;
+}
+
+@{if(!string.IsNullOrEmpty(msg)){
+        <div style="width: 80rem;">
+            <p style = "color: red;">@msg</p>
+        </div>
+    }
 }
 
 
@@ -18,12 +26,12 @@
 
                             @{if (products != null)
                                 foreach(Product product in products){
-                                    <option value = "@product.productId">@product.Name by @product.Manufacturer</option>
+                                    <option value = "@product.productId">@product.Name  at $<span class = "bike-advertised-price" >@product.SalePrice</span></option>
                                 }    
                             }
                 </select>
 
-                <select class = "product-dropdown" name="salesPersonId" placeholder = "Sales Associates" required>
+                <select class = "person-dropdown" name="salesPersonId" placeholder = "Sales Associates" required>
                             <option value="" disabled selected hidden>Sales Associates</option>
 
                             @{if (salesPeople != null)
@@ -33,7 +41,7 @@
                             }
                 </select>
 
-                <select class = "product-dropdown" name="customerId" placeholder = "Customers" required>
+                <select class = "person-dropdown" name="customerId" placeholder = "Customers" required>
                             <option value="" disabled selected hidden>Customers</option>
 
                             @{if (customers != null)
@@ -43,7 +51,7 @@
                             }
                 </select>
 
-                <input style = "width: 25%;margin: 0.5%;" type="number" id="SalePrice" step=0.01 name="SalePrice" placeholder = "Sale Price" required><br><br>
+                <input style = "width: 19%;margin: 0.5%;" type="number" id="SalePrice" step=0.01 name="SalePrice" placeholder = "Sale Price" required><br><br>
 
             </div>
             <div style = "width: 98%;display: flex;">
@@ -62,7 +70,15 @@
         font-size: 30px;
     }
     .product-dropdown{
-        width: 25.75%;
+        width: 36%;
         margin: 0.5%;
+    }
+    .person-dropdown{
+        width: 23%;
+        margin: 0.5%;
+    }
+    .product-dropdown.span{
+        color: green;
+        float: right;
     }
 </style>

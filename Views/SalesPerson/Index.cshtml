@@ -3,7 +3,7 @@
     var salesPeople = ViewBag.SalesPeople;
 }
 <div>
-  <a asp-controller="SalesPerson" asp-action="New" asp-route-id = "">Add a New Sales Person to the Team</a>
+  <a class="btn btn-outline-success" asp-controller="SalesPerson" asp-action="New" asp-route-id = "">Add a New Sales Person to the Team</a>
 </div>
  <table id="salespeople-grid">
                     <tr>
@@ -16,13 +16,13 @@
                     </tr>
                     @if(salesPeople != null){
                       @foreach(SalesPerson person in salesPeople){
-                        
+                        string termDate = @person.TerminationDate.ToString() == "1/1/0001 12:00:00 AM"? "Current Employee": @person.TerminationDate.ToString("MMM dd yyyy");
                             <tr >
-                              <td class = "medium-column"><a asp-controller="SalesPerson" asp-action="Update" asp-route-salesPersonId = "@person.salesPersonId" >@person.LastName, @person.FirstName</a></td>
+                              <td class = "medium-column"><a class="btn btn-light" asp-controller="SalesPerson" asp-action="Update" asp-route-salesPersonId = "@person.salesPersonId" >@person.LastName, @person.FirstName</a></td>
                               <td class = "large-column">@person.Address</td>
-                              <td class = "small-column">@person.PhoneNumber</td>
-                              <td class = "medium-column">@person.StartDate</td>
-                              <td class = "medium-column">@person.TerminationDate</td>
+                              <td class = "small-column">(@person.PhoneNumber.Substring(0,3))  @person.PhoneNumber.Substring(3,3) @person.PhoneNumber.Substring(6,4)</td>
+                              <td class = "medium-column">@person.StartDate.ToString("MMM dd yyyy")</td>
+                              <td class = "medium-column">@termDate</td>
                               
 
                             </tr>
@@ -45,6 +45,8 @@
 }
 
 #salespeople-grid tr:nth-child(even){background-color: #f2f2f2;}
+#salespeople-grid tr:nth-child(odd){background-color: white;}
+
 
 @* #salespeople-grid tr:hover {background-color: #ddd;} *@
 
@@ -52,7 +54,7 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4ebdbf;
+  background-color: #f7b2a1;
   color: white;
 }
 

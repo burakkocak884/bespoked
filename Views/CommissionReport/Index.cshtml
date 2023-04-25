@@ -1,1 +1,105 @@
-<div><h2>To be filled...</h2></div>
+@using profisee_project.Models
+
+
+@{
+
+    var CommissionItems = ViewBag.CommissionReportList;
+    var yearRange = ViewBag.PrePopulatedYearRange;
+    var previouslySelectedYear = ViewBag.PreviouslySelectedYear;
+    var previouslySelectedQuarter = ViewBag.PreviouslySelectedQuarter;
+}
+
+
+<div style="width: 80rem;">
+    <div style = "width: 98%;display: flex;">
+
+            <form style="width: 98%;display: flex;" asp-controller="CommissionReport" asp-action= "Index">
+
+                <select class = "dropdown" name="selectedQuarter" >
+                    <option value="" disabled selected hidden>@previouslySelectedQuarter</option>
+                    <option value="1">First</option>
+                    <option value="2">Second</option>
+                    <option value="3">Third</option>
+                    <option value="4">Fourth</option>
+                </select>
+                
+                <select class = "dropdown" name="year" value = "">
+                    <option value="" disabled selected hidden>@previouslySelectedYear</option>
+                    @{if(yearRange != null)
+                        foreach(string year in yearRange){
+                        <option value="@year">@year</option>
+                        }
+                    }
+                </select>
+
+                <input style = "width: 42.5%;margin: 0.5%;" type="submit" value="Regenerate Commission Report">
+
+
+            </form>
+    </div>
+
+  
+  
+</div>
+
+<table id="commissions-grid">
+                    <tr>
+                        <th class = "medium-column">Sales Person</th>
+                        <th class = "medium-column">Phone Number</th>
+                        <th class = "medium-column">Description</th>
+                        <th class = "medium-column">Number of Sales</th>
+                        <th class = "medium-column">Earned Commission($)</th>
+                    </tr>
+                    @if(CommissionItems != null){
+                      @foreach(ComissionReport commission in CommissionItems){
+                            <tr >
+                                <td class = "medium-column">@commission.salespersonname</td>
+                                <td class = "medium-column">(@commission.SalesPersonPhoneNumber.Substring(0,3))  @commission.SalesPersonPhoneNumber.Substring(3,3) @commission.SalesPersonPhoneNumber.Substring(6,4)</td>
+                                <td class = "medium-column">@commission.quarterDescription</td>
+                                <td class = "medium-column-number">@commission.NumberOfSales</td>
+                                <td class = "medium-column-number">@commission.quarterlycommission.ToString("N2")</td>
+                            </tr>
+                      }
+                    }
+    </table>
+
+    <style>
+#commissions-grid {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#commissions-grid td, #commissions-grid th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#commissions-grid tr:nth-child(even){background-color: #f2f2f2;}
+#commissions-grid tr:nth-child(odd){background-color: white;}
+
+
+@* #commissions-grid tr:hover {background-color: #ddd;} *@
+
+#commissions-grid th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f7b2a1;
+  color: white;
+}
+.dropdown{
+    width: 36%;
+    margin: 0.5%;
+}
+
+.medium-column{
+width: 20%;
+}
+.medium-column-number{
+    width: 20%;
+    text-align: right;
+}
+
+
+</style>

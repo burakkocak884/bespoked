@@ -15,6 +15,7 @@ namespace profisee_project.Models
         public DbSet<Discount> Discounts {get; set;}
 
         public DbSet<SalesInDetails> SalesInDetails {get;set;}
+        public DbSet<ComissionReport> CommisionReports {get; set;}
 
     }
 }

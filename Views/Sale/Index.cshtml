@@ -4,27 +4,28 @@
 }
 
 <div>
-  <a asp-controller="Sale" asp-action="New" asp-route-id = "">Create a New Sale</a>
+  <a class="btn btn-outline-success" asp-controller="Sale" asp-action="New" asp-route-id = "">Create a New Sale</a>
+  <button type="button" id ="number-of-records" class="btn btn-secondary btn-lg" disabled>@salesInDetails.Count sales listed.</button>
 </div>
 
 <table id="products-grid">
                     <tr>
-                        <th class = "medium-column">Product Name and Manufacturer</th>
-                        <th class = "small-column">Customer</th>
                         <th class = "small-column">Sale Date</th>
+                        <th class = "medium-column">Customer</th>
+                        <th class = "medium-column">Product Name</th>
+                        <th class = "medium-column">Sales Person</th>
                         <th class = "small-column">Sale Price($)</th>
-                        <th class = "small-column">Sales Person</th>
                         <th class = "small-column">Sale Commission($)</th>
                        
                     </tr>
                     @if(salesInDetails != null){
                       @foreach(SalesInDetails sale in salesInDetails){
                             <tr >
-                              <td class = "medium-column">@sale.salesProductName</td>
-                              <td class = "small-column">@sale.salesInDetailsCustomerName</td>
                               <td class = "small-column">@sale.salesInDetailsDate</td>
+                              <td class = "medium-column">@sale.salesInDetailsCustomerName</td>
+                              <td class = "medium-column">@sale.salesProductName</td>
+                              <td class = "medium-column">@sale.salesInDetailsSalesPersonName</td>
                               <td class = "small-column-number">@sale.salePrice</td>
-                              <td class = "small-column">@sale.salesInDetailsSalesPersonName</td>
                               <td class = "small-column-number">@Math.Round(sale.salePersonCommission, 2)</td>
                             </tr>
 
@@ -45,6 +46,7 @@
 }
 
 #products-grid tr:nth-child(even){background-color: #f2f2f2;}
+#products-grid tr:nth-child(odd){background-color: white;}
 
 @* #products-grid tr:hover {background-color: #ddd;} *@
 
@@ -52,23 +54,28 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4ebdbf;
+  background-color: #f7b2a1;
   color: white;
 }
 
 .small-column{
-    width: 6%;
+    width: 8%;
 }
 .medium-column{
-    width: 12%;
+    width: 10%;
 }
 .small-column-number{
-    width: 6%;
+    width: 8%;
     text-align: right;
 }
 .medium-column-number{
     width: 10%;
     text-align: right;
+}
+#number-of-records{
+  float: right;
+  margin: 3px 0px;
+  padding: 2px;
 }
 </style>
 
