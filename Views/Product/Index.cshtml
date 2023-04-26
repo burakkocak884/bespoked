@@ -1,0 +1,81 @@
+@using profisee_project.Models
+@{
+    var products = ViewBag.Products;
+}
+
+<div>
+  <a class="btn btn-outline-success" asp-controller="Product" asp-action="New" asp-route-id = "">Add a New Product to the Invertory</a>
+</div>
+ <table id="products-grid">
+                    <tr>
+                        <th class = "small-column">Name</th>
+                        <th class = "medium-column">Manufacturer</th>
+                        <th class = "small-column">Style</th>
+                        <th class = "small-column">Purchase Price($)</th>
+                        <th class = "small-column">Sale Price($)</th>
+                        <th class = "small-column">Quantity On Hand</th>
+                        <th class = "small-column">Commission %</th>
+                    </tr>
+                    @if(products != null){
+                      @foreach(Product product in products){
+                            string quantitiyColumnValueClass = product.QuantityOnHand == 0 ? "small-column-number-zero" : "small-column-number";
+
+                            <tr >
+                              <td class = "small-column"><a class="btn btn-light" asp-controller="Product" asp-action="Update" asp-route-productId = "@product.productId" >@product.Name</a></td>
+                              <td class = "medium-column">@product.Manufacturer</td>
+                              <td class = "small-column">@product.Style</td>
+                              <td class = "small-column-number">@product.PurchasePrice</td>
+                              <td class = "small-column-number">@product.SalePrice</td>
+                              <td class = "small-column-number">@product.QuantityOnHand</td>
+                              <td class = "small-column-number">@product.CommissionPercentage</td>
+                            </tr>
+                      }
+                    }
+    </table>
+
+    <style>
+#products-grid {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#products-grid td, #products-grid th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#products-grid tr:nth-child(even){background-color: #f2f2f2;}
+#products-grid tr:nth-child(odd){background-color: white;}
+
+
+@* #products-grid tr:hover {background-color: #ddd;} *@
+
+#products-grid th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f7b2a1;
+  color: white;
+}
+
+.small-column{
+    width: 12%;
+}
+.medium-column{
+    width: 22%;
+}
+.small-column-number{
+    width: 13%;
+    text-align: right;
+}
+.small-column-number-zero{
+    width: 13%;
+    text-align: right;
+    color: red;
+}
+.medium-column-number{
+    width: 22%;
+    text-align: right;
+}
+</style>

@@ -1,0 +1,34 @@
+
+@using profisee_project.Models
+
+@{
+    var customer = ViewBag.Customer;
+    var customerStartDate = customer.StartDate.ToString("yyyy-MM-dd");
+}
+
+
+
+
+<div style="width: 80rem;">
+        <form style="width: 98%;" asp-controller="Customer" asp-action= "UpdateRecord">
+            <div style = "width: 98%;display: flex;">
+                <input style = "width: 10%;margin: 0.5%;" type="text" id="FirstName" name="FirstName" value = "@customer.FirstName" placeholder = "First Name" required><br><br>
+                <input style = "width: 10%;margin: 0.5%;" type="text" id="LastName" name="LastName" value = "@customer.LastName" placeholder = "Last Name" required><br><br>
+                <input style = "width: 44%;margin: 0.5%;" type="text" id="Address" name="Address" value = "@customer.Address" placeholder = "Address" required><br><br>
+                <input style = "width: 13%;margin: 0.5%;" type="text" id="PhoneNumber" name="PhoneNumber" maxlength="10" minlength="10"  value = "@customer.PhoneNumber" placeholder = "Phone Number" required><br><br>
+                <label class = "date-label" for="StartDate">Start Date</label>
+                <input style = "width: 13%;margin: 0.5%;" type="date" id="StartDate" name="StartDate" value = "@customerStartDate" placeholder = "Start Date" required><br><br>
+                <input  type="hidden" id="customerId" name="customerId" value="@customer.customerId" >
+            </div>
+            <div style = "width: 99%;">
+                <input style = "width: 98%;margin: 0.5%;" type="submit" value="Update Customer Information">
+            </div>
+        </form>
+</div>
+
+
+<style>
+    .date-label{
+        font-size: 20px;
+    }
+</style>

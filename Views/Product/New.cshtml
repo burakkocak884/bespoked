@@ -1,0 +1,44 @@
+
+
+@{
+    string msg = ViewBag.Message;
+}
+
+@{if(!string.IsNullOrEmpty(msg)){
+        <div style="width: 80rem;">
+            <p style = "color: red;">@msg</p>
+        </div>
+    }
+}
+
+<div style="width: 80rem;">
+    <form style="width: 98%;" asp-controller="Product" asp-action= "Save">
+            
+        <div style = "width: 98%;display: flex;">
+            <input style = "width: 30%;margin: 0.5%;" type="text" id="Name" name="Name" placeholder = "Product Name"  required><br><br>
+            <input style = "width: 40%;margin: 0.5%;" type="text" id="Manufacturer" name="Manufacturer" placeholder = "Manufacturer"  required><br><br>
+            <input style = "width: 30%;margin: 0.5%;" type="text" id="Style" name="Style" placeholder = "Style"  required><br><br>
+        </div>
+        
+        <div style = "width: 98%;display: flex;">
+            <input style = "width: 25%;margin: 0.5%;" type="number" id="PurchasePrice" step=0.01 name="PurchasePrice" placeholder = "Purchase Price"  required><br><br>
+            <input style = "width: 25%;margin: 0.5%;" type="number" id="SalePrice" step=0.01 name="SalePrice" placeholder = "Sale Price" required><br><br>
+            <input style = "width: 25%;margin: 0.5%;" type="number" id="QuantityOnHand" name="QuantityOnHand" placeholder = "Quantity On Hand"  required><br><br>
+            <input style = "width: 25%;margin: 0.5%;" type="number" id="CommissionPercentage" name="CommissionPercentage" placeholder = "Commission Percentage"  required><br><br>
+            <input  type="hidden" id="productId" name="productId" >
+        </div>
+        
+        <div style = "width: 99%;">
+            <input style = "width: 98%;margin: 0.5%;" type="submit" value="Create a New Product">
+        </div>
+    </form>
+</div>
+
+
+
+
+<style>
+    .date-label{
+        font-size: 30px;
+    }
+</style>
