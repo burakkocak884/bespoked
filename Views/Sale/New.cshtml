@@ -30,7 +30,8 @@
 
                             @{if (products != null)
                                 foreach(Product product in products){
-                                    <option value = "@product.productId">@product.Name  at $<span class = "bike-advertised-price" >@product.SalePrice</span></option>
+                                    string stockInfo = @product.QuantityOnHand == 0 ? "     --->> Out of Stock!!!": string.Empty;
+                                    <option value = "@product.productId">@product.Name at $ @product.SalePrice  <span id="out-of-stock-text">@stockInfo</span></option>
                                 }    
                             }
                 </select>
@@ -50,13 +51,13 @@
 
                             @{if (customers != null)
                                 foreach(Customer customer in customers){
-                                    <option value = "@customer.customerId">@customer.LastName, @customer.FirstName</option>
+                                    <option value = "@customer.customerId" >@customer.LastName, @customer.FirstName</option>
                                 }    
                             }
                 </select>
 
                 <input style = "width: 19%;margin: 0.5%;" type="number" id="SalePrice" step=0.01 name="SalePrice" placeholder = "Sale Price" required><br><br>
-
+                
             </div>
             
             <div style = "width: 99%;">
@@ -81,5 +82,9 @@
     .product-dropdown.span{
         color: green;
         float: right;
+    }
+    #out-of-stock-text{
+        color: red;
+        font-style: italic;
     }
 </style>

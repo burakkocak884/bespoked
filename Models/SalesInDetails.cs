@@ -7,9 +7,9 @@ namespace profisee_project.Models
         public int salesInDetailsId {get;set;}
         public string salesInDetailsDate {get;set;}
         public int salesPersonId {get;set;}
-        public string salesInDetailsSalesPersonName {get;set;}
+        public string SalePersonName {get;set;}
         public int salesInDetailsCustomerId {get;set;}
-        public string salesInDetailsCustomerName {get;set;}
+        public string SaleCustomerName {get;set;}
         public int salesInDetailsProductId {get;set;}
         public string salesProductName {get;set;}
         public double salePersonCommission {get;set;}

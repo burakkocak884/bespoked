@@ -67,5 +67,16 @@ namespace profisee_project.Controllers
             ViewBag.Person = _dbContext.SalesPeople.ToList().Find(p => p.salesPersonId == salesPersonId);
             return View();
         }
+
+        public IActionResult Delete(int salesPersonId){
+            
+            SalesPerson salesPersonToBeRemoved = _dbContext.SalesPeople.ToList().Find(c => c.salesPersonId == salesPersonId);
+            if(salesPersonToBeRemoved != null){
+                _dbContext.Remove(salesPersonToBeRemoved);
+                _dbContext.SaveChanges();
+            }
+            
+            return RedirectToAction("Index");
+        }
     }
 }

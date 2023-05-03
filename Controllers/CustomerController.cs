@@ -60,11 +60,20 @@ namespace profisee_project.Controllers
             return View();
         }
         public IActionResult UpdateRecord(Customer customer){
-            
             _dbContext.Update(customer);
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int customerId){
             
+            Customer customertToBeRemoved = _dbContext.Customers.ToList().Find(c => c.customerId == customerId);
+            if(customertToBeRemoved != null){
+                _dbContext.Remove(customertToBeRemoved);
+                _dbContext.SaveChanges();
+            }
+            
+            return RedirectToAction("Index");
         }
 
         

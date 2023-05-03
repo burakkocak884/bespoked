@@ -51,12 +51,14 @@ namespace profisee_project.Controllers
         {
             string salesInDetailsQuery = "SELECT sale.\"saleId\" AS salesInDetailsId, TO_CHAR(sale.\"SaleDate\" :: DATE, 'Mon dd, yyyy') AS SalesInDetailsDate " +
                                                 ",sale.\"SalePrice\",sale.\"productId\" AS salesInDetailsProductId ,product.\"Name\" AS SalesProductName " +
-                                                ",sale.\"customerId\" AS salesInDetailsCustomerId, customer.\"LastName\" ||', '|| customer.\"FirstName\" AS SalesInDetailsCustomerName " +
-                                                ",sale.\"salesPersonId\" AS salesPersonId,salesPerson.\"LastName\" ||', '|| salesPerson.\"FirstName\" AS SalesInDetailsSalesPersonName " +
+                                                ",sale.\"customerId\" AS salesInDetailsCustomerId " +
+                                                " ,sale.\"SaleCustomerName\" " +
+                                                ",sale.\"salesPersonId\" AS salesPersonId " +
+                                                ",sale.\"SalePersonName\" " +
                                                 ",sale.\"SaleCommission\" AS SalePersonCommission " +
                                             "FROM \"Sales\" sale " +
                                             "JOIN \"Products\" product on product.\"productId\" = sale.\"productId\" " +
-                                            "JOIN \"Customers\" customer ON customer.\"customerId\" = sale.\"customerId\" " +
+                                            "LEFT JOIN \"Customers\" customer ON customer.\"customerId\" = sale.\"customerId\" " +
                                             "JOIN \"SalesPeople\" salesPerson ON salesPerson.\"salesPersonId\" = sale.\"salesPersonId\" " +
                                             "ORDER BY sale.\"SaleDate\" DESC , salesPerson.\"LastName\" ASC";
 
@@ -82,7 +84,7 @@ namespace profisee_project.Controllers
             Product soldProductFromDB = _dbContext.Products.ToList().Find(p => p.productId == sale.productId);
             SalesPerson seller = _dbContext.SalesPeople.ToList().Find(p => p.salesPersonId == sale.salesPersonId);
 
-            if(seller != null && seller.TerminationDate < sale.SaleDate)
+            if(seller != null && seller.TerminationDate != DateTime.MinValue && seller.TerminationDate < sale.SaleDate)
                 errorMessages.Add(string.Format("{0} {1} is Not authorized to complete a sale.",seller.FirstName, seller.LastName));
 
 
@@ -93,12 +95,24 @@ namespace profisee_project.Controllers
 
             if(errorMessages.Count > 0){
                 return RedirectToActionPermanent("New", new{errorMessages = errorMessages});
-            }else{
+            }
+            else
+            {
+                SalesPerson salePerson = _dbContext.SalesPeople.ToList().Find(s => s.salesPersonId == sale.salesPersonId);
+                Customer saleCustomer = _dbContext.Customers.ToList().Find(c => c.customerId == sale.customerId);
                 Discount currentDiscount = _dbContext.Discounts.ToList().Find(d => d.productId == sale.productId);
-                if(currentDiscount != null){
+                if(currentDiscount != null && sale.SaleDate >= currentDiscount.BeginDate && sale.SaleDate <= currentDiscount.EndDate){
                     sale.SalePrice = sale.SalePrice * ((100 - currentDiscount.DiscountPercentage) / 100);
                 }
+                
+                if(salePerson != null)
+                    sale.SalePersonName = string.Format("{1}, {0}",salePerson.FirstName, salePerson.LastName);
+
+                if(saleCustomer != null)
+                    sale.SaleCustomerName = string.Format("{1}, {0}",saleCustomer.FirstName, saleCustomer.LastName);
+                
                 sale.SaleCommission = (sale.SalePrice - soldProductFromDB.PurchasePrice) * (soldProductFromDB.CommissionPercentage / 100);
+
                 _dbContext.Sales.Add(sale);
                 _dbContext.SaveChanges();
                 soldProductFromDB.QuantityOnHand  -= 1;

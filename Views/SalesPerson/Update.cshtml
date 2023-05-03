@@ -30,6 +30,13 @@
                 <input style = "width: 98%;margin: 0.5%;" type="submit" value="Update Sales Person Information">
             </div>
         </form>
+
+
+        <form style="width: 98%;" asp-controller="SalesPerson" asp-action= "Delete">
+            <input style = "width: 98%;margin: 0.5%;" type="submit" value="Delete @person.FirstName @person.LastName">
+            <input  type="hidden" id="salesPersonId" name="salesPersonId" value="@person.salesPersonId" >
+
+        </form>
 </div>
 
     }

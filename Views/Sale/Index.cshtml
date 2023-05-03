@@ -21,9 +21,9 @@
                       @foreach(SalesInDetails sale in salesInDetails){
                             <tr >
                               <td class = "small-column">@sale.salesInDetailsDate</td>
-                              <td class = "medium-column">@sale.salesInDetailsCustomerName</td>
+                              <td class = "medium-column">@sale.SaleCustomerName</td>
                               <td class = "medium-column">@sale.salesProductName</td>
-                              <td class = "medium-column">@sale.salesInDetailsSalesPersonName</td>
+                              <td class = "medium-column">@sale.SalePersonName</td>
                               <td class = "small-column-number">@sale.salePrice</td>
                               <td class = "small-column-number">@Math.Round(sale.salePersonCommission, 2)</td>
                             </tr>
