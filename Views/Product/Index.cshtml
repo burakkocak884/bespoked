@@ -20,7 +20,7 @@
                       @foreach(Product product in products){
                             string quantitiyColumnValueClass = product.QuantityOnHand == 0 ? "small-column-number-zero" : "small-column-number";
 
-                            <tr >
+                            <tr>
                               <td class = "small-column"><a class="btn btn-light" asp-controller="Product" asp-action="Update" asp-route-productId = "@product.productId" >@product.Name</a></td>
                               <td class = "medium-column">@product.Manufacturer</td>
                               <td class = "small-column">@product.Style</td>
