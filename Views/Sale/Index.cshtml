@@ -10,18 +10,18 @@
 
 <table id="products-grid">
                     <tr>
-                        <th class = "small-column">Sale Date</th>
-                        <th class = "medium-column">Customer</th>
+                        <th class = "medium-column">Sale Date</th>
+                        <th class = "large-column">Customer</th>
                         <th class = "medium-column">Product Name</th>
                         <th class = "medium-column">Sales Person</th>
                         <th class = "small-column">Sale Price($)</th>
-                        <th class = "small-column">Sale Commission($)</th>
+                        <th class = "small-column">Commission($)</th>
                     </tr>
                     @if(salesInDetails != null){
                       @foreach(SalesInDetails sale in salesInDetails){
                             <tr >
-                              <td class = "small-column">@sale.salesInDetailsDate</td>
-                              <td class = "medium-column">@sale.SaleCustomerName</td>
+                              <td class = "medium-column">@sale.salesInDetailsDate</td>
+                              <td class = "large-column">@sale.SaleCustomerName</td>
                               <td class = "medium-column">@sale.salesProductName</td>
                               <td class = "medium-column">@sale.SalePersonName</td>
                               <td class = "small-column-number">@sale.salePrice</td>
@@ -60,15 +60,18 @@
     width: 8%;
 }
 .medium-column{
-    width: 10%;
+    width: 14%;
 }
 .small-column-number{
     width: 8%;
     text-align: right;
 }
 .medium-column-number{
-    width: 10%;
+    width: 14%;
     text-align: right;
+}
+.large-column{
+    width: 42%;
 }
 #number-of-records{
   float: right;

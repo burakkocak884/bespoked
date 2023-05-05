@@ -83,6 +83,8 @@
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/CommissionReport/Index.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Customer/New.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Customer/Update.cshtml.g.cs
+/Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Discount/Index.cshtml.g.cs
+/Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Discount/New.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/profisee-project.csproj.AssemblyReference.cache
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/profisee-project.GeneratedMSBuildEditorConfig.editorconfig
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/profisee-project.csproj.CoreCompileInputs.cache

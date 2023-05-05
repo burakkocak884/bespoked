@@ -14399,6 +14399,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/burakkocak/Development/profisee-project/Views/Discount/Index.cshtml",
+      "TargetPath": "Views\\Discount\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/burakkocak/Development/profisee-project/Views/SalesPerson/Update.cshtml",
       "TargetPath": "Views\\SalesPerson\\Update.cshtml",
       "FileKind": "mvc"
@@ -14406,6 +14411,11 @@
     {
       "FilePath": "/Users/burakkocak/Development/profisee-project/Views/Sale/New.cshtml",
       "TargetPath": "Views\\Sale\\New.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/burakkocak/Development/profisee-project/Views/Discount/New.cshtml",
+      "TargetPath": "Views\\Discount\\New.cshtml",
       "FileKind": "mvc"
     },
     {

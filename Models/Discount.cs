@@ -9,5 +9,6 @@ namespace profisee_project.Models
         public DateTime EndDate {get;set;}
         public double DiscountPercentage {get; set;}
         public int productId {get;set;}
+        public string ProductDescription {get;set;}
     }
 }

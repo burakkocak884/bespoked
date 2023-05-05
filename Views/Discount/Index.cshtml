@@ -1,0 +1,91 @@
+@using profisee_project.Models
+@{
+    var discounts = ViewBag.Discounts;
+}
+<div>
+  <a class="btn btn-outline-success" asp-controller="Discount" asp-action="New" asp-route-id = "">Add a New Discount</a>
+</div>
+<div>
+     <table id="discount-grid">
+                    <tr>
+                        <th class = "small-column">Discount Status</th>
+                        <th class = "small-column">Begin Date</th>
+                        <th class = "small-column">End Date</th>
+                        <th class = "medium-column">Product Description</th>
+                        <th class = "small-column">Discount Percent</th>
+                    </tr>
+                    @if(discounts != null){
+                        @foreach(Discount discount in discounts){
+                          string discountStatus = "Active";
+                          string discountStatusClassName = "small-column-active"; 
+                          if(discount.EndDate < DateTime.Now){
+                              discountStatus = "Expired";
+                              discountStatusClassName = "small-column-expired";
+                          }
+
+                          if(discount.BeginDate > DateTime.Now){
+                              discountStatus = "Will be Active soon";
+                              discountStatusClassName = "small-column-future";
+                          }
+                            <tr >
+                                <td class = "@discountStatusClassName">@discountStatus</td>
+                                <td class = "small-column">@discount.BeginDate.ToString("MMM dd yyyy")</td>
+                                <td class = "small-column">@discount.EndDate.ToString("MMM dd yyyy")</td>
+                                <td class = "medium-column">@discount.ProductDescription</td>
+                                <td class = "small-column-number">@discount.DiscountPercentage</td>
+                            </tr>
+                        }
+                    }
+    </table>
+</div>
+
+<style>
+#discount-grid {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#discount-grid td, #discount-grid th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#discount-grid tr:nth-child(even){background-color: #f2f2f2;}
+#discount-grid tr:nth-child(odd){background-color: white;}
+
+@* #discount-grid tr:hover {background-color: #ddd;} *@
+
+#discount-grid th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f7b2a1;
+  color: white;
+}
+
+.small-column{
+  width: 15%;
+}
+.small-column-number{
+  width: 15%;
+  text-align: right;
+}
+.small-column-expired{
+  width: 15%;
+  color: red;
+}
+.small-column-active{
+  width: 15%;
+  color: green;
+}
+.small-column-future{
+  width: 15%;
+  color: brown;
+}
+
+.medium-column{
+  width: 40%;
+}
+
+</style>

@@ -80,6 +80,7 @@ namespace profisee_project.Controllers
 
         public IActionResult Save(Sale sale)
         {
+            sale.SaleDate = DateTime.Now;
             List<string> errorMessages = new List<string>();
             Product soldProductFromDB = _dbContext.Products.ToList().Find(p => p.productId == sale.productId);
             SalesPerson seller = _dbContext.SalesPeople.ToList().Find(p => p.salesPersonId == sale.salesPersonId);
@@ -101,9 +102,7 @@ namespace profisee_project.Controllers
                 SalesPerson salePerson = _dbContext.SalesPeople.ToList().Find(s => s.salesPersonId == sale.salesPersonId);
                 Customer saleCustomer = _dbContext.Customers.ToList().Find(c => c.customerId == sale.customerId);
                 Discount currentDiscount = _dbContext.Discounts.ToList().Find(d => d.productId == sale.productId);
-                if(currentDiscount != null && sale.SaleDate >= currentDiscount.BeginDate && sale.SaleDate <= currentDiscount.EndDate){
-                    sale.SalePrice = sale.SalePrice * ((100 - currentDiscount.DiscountPercentage) / 100);
-                }
+                
                 
                 if(salePerson != null)
                     sale.SalePersonName = string.Format("{1}, {0}",salePerson.FirstName, salePerson.LastName);
@@ -111,6 +110,10 @@ namespace profisee_project.Controllers
                 if(saleCustomer != null)
                     sale.SaleCustomerName = string.Format("{1}, {0}",saleCustomer.FirstName, saleCustomer.LastName);
                 
+                if(currentDiscount != null && sale.SaleDate >= currentDiscount.BeginDate && sale.SaleDate <= currentDiscount.EndDate){
+                    sale.SalePrice = sale.SalePrice * ((100 - currentDiscount.DiscountPercentage) / 100);
+                    sale.SaleCustomerName = string.Format("{0}  %{1} off included in Sale Price!!", sale.SaleCustomerName, currentDiscount.DiscountPercentage.ToString());
+                }
                 sale.SaleCommission = (sale.SalePrice - soldProductFromDB.PurchasePrice) * (soldProductFromDB.CommissionPercentage / 100);
 
                 _dbContext.Sales.Add(sale);
