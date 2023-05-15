@@ -37,25 +37,25 @@ namespace profisee_project.Controllers
                 case 1:
                     beginningOfQuarter = "01-01";
                     endingOfQuarter = "03-31";
-                    quarterDescription = string.Format("First Quarter of {0}.", reportYear);
+                    quarterDescription = string.Format("First Quarter of {0}", reportYear);
                     break;
                 
                 case 2:
                     beginningOfQuarter = "04-01";
                     endingOfQuarter = "06-30";
-                    quarterDescription = string.Format("Second Quarter of {0}.", reportYear);
+                    quarterDescription = string.Format("Second Quarter of {0}", reportYear);
                     break;
                 
                 case 3:
                     beginningOfQuarter = "07-01";
                     endingOfQuarter = "09-30";
-                    quarterDescription = string.Format("Third Quarter of {0}.", reportYear);
+                    quarterDescription = string.Format("Third Quarter of {0}", reportYear);
                     break;
                 
                 case 4:
                     beginningOfQuarter = "10-01";
                     endingOfQuarter = "12-31";
-                    quarterDescription = string.Format("Fourth Quarter of {0}.", reportYear);
+                    quarterDescription = string.Format("Fourth Quarter of {0}", reportYear);
                     break;
             
             }

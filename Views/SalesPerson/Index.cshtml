@@ -5,7 +5,9 @@
 <div>
   <a class="btn btn-outline-success" asp-controller="SalesPerson" asp-action="New" asp-route-id = "">Add a New Sales Person to the Team</a>
 </div>
+<div class ="tableFixHead">
  <table id="salespeople-grid">
+                  <thead>
                     <tr>
                         <th class = "medium-column">Name</th>
                         <th class = "large-column">Address</th>
@@ -13,6 +15,7 @@
                         <th class = "medium-column">Start Date</th>
                         <th class = "medium-column">Termination Date</th>
                     </tr>
+                  </thead>
                     @if(salesPeople != null){
                       @foreach(SalesPerson person in salesPeople){
                         string termDate = @person.TerminationDate.ToString() == "1/1/0001 12:00:00 AM"? "Current Employee": @person.TerminationDate.ToString("MMM dd yyyy");
@@ -27,7 +30,7 @@
                     }
     </table>
 
-
+</div>
 
     <style>
 #salespeople-grid {
@@ -64,6 +67,15 @@ width: 10%;
 }
 .large-column{
 width: 20%;
+}
+.tableFixHead {
+        overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
+        height: 76vh; /* gives an initial height of 200px to the table */
+        width: 100%;
+      }
+.tableFixHead thead th {
+  position: sticky; /* make the table heads sticky */
+  top: 0px; /* table head will be placed from the top of the table and sticks to it */
 }
 
 

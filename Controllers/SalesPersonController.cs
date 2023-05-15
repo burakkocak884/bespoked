@@ -30,7 +30,7 @@ namespace profisee_project.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.SalesPeople = GetSalesPeople<SalesPerson>();
+            ViewBag.SalesPeople = GetSalesPeople<SalesPerson>().OrderBy(person => person.LastName);
             return View();
         }
 

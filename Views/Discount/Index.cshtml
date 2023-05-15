@@ -5,8 +5,9 @@
 <div>
   <a class="btn btn-outline-success" asp-controller="Discount" asp-action="New" asp-route-id = "">Add a New Discount</a>
 </div>
-<div>
+<div class = "tableFixHead">
      <table id="discount-grid">
+                  <thead>
                     <tr>
                         <th class = "small-column">Discount Status</th>
                         <th class = "small-column">Begin Date</th>
@@ -14,6 +15,7 @@
                         <th class = "medium-column">Product Description</th>
                         <th class = "small-column">Discount Percent</th>
                     </tr>
+                  </thead>
                     @if(discounts != null){
                         @foreach(Discount discount in discounts){
                           string discountStatus = "Active";
@@ -86,6 +88,15 @@
 
 .medium-column{
   width: 40%;
+}
+.tableFixHead {
+        overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
+        height: 76vh; /* gives an initial height of 200px to the table */
+        width: 100%;
+      }
+.tableFixHead thead th {
+  position: sticky; /* make the table heads sticky */
+  top: 0px; /* table head will be placed from the top of the table and sticks to it */
 }
 
 </style>

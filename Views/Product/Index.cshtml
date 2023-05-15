@@ -6,24 +6,27 @@
 <div>
   <a class="btn btn-outline-success" asp-controller="Product" asp-action="New" asp-route-id = "">Add a New Product to the Invertory</a>
 </div>
+<div class = "tableFixHead">
  <table id="products-grid">
+                  <thead>
                     <tr>
-                        <th class = "small-column">Name</th>
-                        <th class = "medium-column">Manufacturer</th>
-                        <th class = "small-column">Style</th>
-                        <th class = "small-column">Purchase Price($)</th>
-                        <th class = "small-column">Sale Price($)</th>
-                        <th class = "small-column">Quantity On Hand</th>
-                        <th class = "small-column">Commission %</th>
+                        <th class = "medium-column">Name</th>
+                        <th class = "large-column">Manufacturer</th>
+                        <th class = "medium-column">Style</th>
+                        <th class = "small-column">Purchase $</th>
+                        <th class = "small-column">Sale $</th>
+                        <th class = "small-column">Stock</th>
+                        <th class = "small-column">Comm %</th>
                     </tr>
+                  </thead>
                     @if(products != null){
                       @foreach(Product product in products){
                             string quantitiyColumnValueClass = product.QuantityOnHand == 0 ? "small-column-number-zero" : "small-column-number";
 
                             <tr>
-                              <td class = "small-column"><a class="btn btn-light" asp-controller="Product" asp-action="Update" asp-route-productId = "@product.productId" >@product.Name</a></td>
-                              <td class = "medium-column">@product.Manufacturer</td>
-                              <td class = "small-column">@product.Style</td>
+                              <td class = "medium-column"><a class="btn btn-light" asp-controller="Product" asp-action="Update" asp-route-productId = "@product.productId" >@product.Name</a></td>
+                              <td class = "large-column">@product.Manufacturer</td>
+                              <td class = "medium-column">@product.Style</td>
                               <td class = "small-column-number">@product.PurchasePrice</td>
                               <td class = "small-column-number">@product.SalePrice</td>
                               <td class = "@quantitiyColumnValueClass">@product.QuantityOnHand</td>
@@ -32,7 +35,7 @@
                       }
                     }
     </table>
-
+</div>
     <style>
 #products-grid {
   font-family: Arial, Helvetica, sans-serif;
@@ -60,22 +63,34 @@
 }
 
 .small-column{
-    width: 12%;
+    width: 10%;
 }
 .medium-column{
-    width: 22%;
+    width: 14%;
 }
 .small-column-number{
-    width: 13%;
+    width: 10%;
     text-align: right;
 }
 .small-column-number-zero{
-    width: 13%;
+    width: 10%;
     text-align: right;
     color: red;
 }
 .medium-column-number{
-    width: 22%;
+    width: 14%;
     text-align: right;
+}
+.large-column{
+    width: 32%;
+}
+.tableFixHead {
+        overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
+        height: 76vh; /* gives an initial height of 200px to the table */
+        width: 100%;
+      }
+.tableFixHead thead th {
+  position: sticky; /* make the table heads sticky */
+  top: 0px; /* table head will be placed from the top of the table and sticks to it */
 }
 </style>

@@ -58,6 +58,9 @@ namespace profisee_project.Controllers
             Discount sameProductDiscount = GetDiscounts<Discount>().Find(d => d.productId == discount.productId);
             Product matchingProduct = GetProducts<Product>().Find(p => p.productId == discount.productId);
 
+            if(discount.BeginDate.Date > discount.EndDate.Date){
+                errorMessages.Add("Begin Date can not be a later date than End Date");
+            }
             
             if(exactDiscount != null){
                errorMessages.Add("The same discount already exists.");

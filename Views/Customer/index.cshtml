@@ -8,13 +8,16 @@
   <a class="btn btn-outline-success" asp-controller="Customer" asp-action="New" asp-route-id = "">Add a New Customer</a>
 </div>
 
+<div class ="tableFixHead">
  <table id="customers-grid">
+                  <thead>
                     <tr>
                         <th class = "medium-column">Customer</th>
                         <th class = "large-column">Address</th>
                         <th class = "small-column">Phone Number</th>
                         <th class = "medium-column">Start Date</th>
                     </tr>
+                  </thead>
                     @if(customers != null){
                       @foreach(Customer customer in customers){
                             <tr >
@@ -26,7 +29,7 @@
                       }
                     }
     </table>
-
+</div>
     <style>
 #customers-grid {
   font-family: Arial, Helvetica, sans-serif;
@@ -62,6 +65,15 @@ width: 12%;
 }
 .large-column{
 width: 20%;
+}
+.tableFixHead {
+        overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
+        height: 76vh; /* gives an initial height of 200px to the table */
+        width: 100%;
+      }
+.tableFixHead thead th {
+  position: sticky; /* make the table heads sticky */
+  top: 0px; /* table head will be placed from the top of the table and sticks to it */
 }
 
 </style>

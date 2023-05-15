@@ -8,10 +8,11 @@ namespace profisee_project.Models
         public DateTime SaleDate {get;set;}
         public double SalePrice {get;set;}
         public int salesPersonId {get;set;}
-        public int customerId {get;set;}
-        public double SaleCommission {get;set;}
         public string SalePersonName {get;set;}
+        public int customerId {get;set;}
         public string SaleCustomerName {get;set;}
+        public double SaleCommission {get;set;}
+        public string ProductDetail {get;set;}
         public int productId {get;set;}
     }
 }
