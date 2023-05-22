@@ -55,7 +55,7 @@ namespace profisee_project.Controllers
             List<string> errorMessages = new List<string>();
 
             Discount exactDiscount = GetDiscounts<Discount>().Find(d => (d.BeginDate == discount.BeginDate && d.EndDate == discount.EndDate && d.productId == discount.productId));
-            Discount sameProductDiscount = GetDiscounts<Discount>().Find(d => d.productId == discount.productId);
+            List<Discount> sameProductDiscounts = GetDiscounts<Discount>().FindAll(d => d.productId == discount.productId);
             Product matchingProduct = GetProducts<Product>().Find(p => p.productId == discount.productId);
 
             if(discount.BeginDate.Date > discount.EndDate.Date){
@@ -78,13 +78,19 @@ namespace profisee_project.Controllers
                 errorMessages.Add("Maximum allowed discount rate is 35.");
             }
 
-            if(sameProductDiscount != null){
-                if(discount.BeginDate < sameProductDiscount.EndDate){
-                    errorMessages.Add(string.Format("Same product currently has a discount that will end on: {0}",sameProductDiscount.EndDate.ToString("MMM dd yyyy")));
+
+            if(sameProductDiscounts != null && sameProductDiscounts.Count > 0){
+                foreach (Discount d in sameProductDiscounts)
+                {
+                    if(discount.BeginDate <= d.EndDate){
+                    errorMessages.Add(string.Format("Same product currently has a %{1} discount that will end on: {0}",d.EndDate.ToString("MMM dd yyyy"),d.DiscountPercentage.ToString()));
+                    }
+                    
+                    if(discount.EndDate.Date >= d.BeginDate.Date && discount.EndDate.Date <= d.EndDate.Date){
+                        errorMessages.Add(string.Format("Same product currently has a %{1} discount that will begin on: {0}",d.BeginDate.ToString("MMM dd yyyy"),d.DiscountPercentage.ToString()));
+                    }
                 }
-                if(discount.EndDate.Date > sameProductDiscount.BeginDate.Date && discount.EndDate.Date < sameProductDiscount.EndDate.Date){
-                    errorMessages.Add(string.Format("Same product currently has a discount that will begin on: {0}",sameProductDiscount.BeginDate.ToString("MMM dd yyyy")));
-                }
+                
             }
             
             

@@ -87,13 +87,14 @@ namespace profisee_project.Controllers
                     errorMessages.Add(string.Format("{0} is out of stock.",soldProductFromDB.Name));
                 }else{
                     sale.ProductDetail = string.Format("{0} ",soldProductFromDB.Name);
+                    sale.SalePrice = soldProductFromDB.SalePrice;
                 }
             }
 
             
             SalesPerson salePerson = _dbContext.SalesPeople.ToList().Find(s => s.salesPersonId == sale.salesPersonId);
             Customer saleCustomer = _dbContext.Customers.ToList().Find(c => c.customerId == sale.customerId);
-            Discount currentDiscount = _dbContext.Discounts.ToList().Find(d => d.productId == sale.productId);
+            List<Discount> discountsInHand = _dbContext.Discounts.ToList().FindAll(d => d.productId == sale.productId);
             
             
             if(salePerson != null)
@@ -101,21 +102,36 @@ namespace profisee_project.Controllers
 
             if(saleCustomer != null)
                 sale.SaleCustomerName = string.Format("{1}, {0}",saleCustomer.FirstName, saleCustomer.LastName);
+            if(discountsInHand != null && discountsInHand.Count > 0){
+                double desiredDiscountPercentage = 0;
+                foreach (Discount discount in discountsInHand)
+                {
+                    if(sale.SaleDate >= discount.BeginDate && sale.SaleDate <= discount.EndDate){
+                        
+                        if(desiredDiscountPercentage < discount.DiscountPercentage){
+                            desiredDiscountPercentage = discount.DiscountPercentage;
+                        }
+
+                        sale.SalePrice = sale.SalePrice * ((100 - desiredDiscountPercentage) / 100);
+                        sale.ProductDetail = string.Format("{0}  %{1} discount included!!!", sale.ProductDetail, desiredDiscountPercentage.ToString());
+                    
+
+                    
+                    }
+                }
+            }
             
-            if(currentDiscount != null && sale.SaleDate >= currentDiscount.BeginDate && sale.SaleDate <= currentDiscount.EndDate){
-                sale.SalePrice = sale.SalePrice * ((100 - currentDiscount.DiscountPercentage) / 100);
-                sale.ProductDetail = string.Format("{0}  %{1} discount included!!!", sale.ProductDetail, currentDiscount.DiscountPercentage.ToString());
-            }
+            
 
-            double minRequiredSaleAmount = soldProductFromDB.PurchasePrice * 1.2;
-            if(sale.SalePrice  < minRequiredSaleAmount){
-                errorMessages.Add(string.Format("Sale Price (${0}) after discount(if any) must be greater than minimum allowed Sale amount (${1}).",sale.SalePrice, minRequiredSaleAmount ));
-            }
+            // double minRequiredSaleAmount = soldProductFromDB.PurchasePrice * 1.2;
+            // if(sale.SalePrice  < minRequiredSaleAmount){
+            //     errorMessages.Add(string.Format("Sale Price (${0}) after discount(if any) must be greater than minimum allowed Sale amount (${1}).",sale.SalePrice, minRequiredSaleAmount ));
+            // }
 
-            double maxAllowedSaleAmount = soldProductFromDB.SalePrice * 1.4;
-            if(sale.SalePrice  > maxAllowedSaleAmount){
-                errorMessages.Add(string.Format("Sale Price (${0}) after discount(if any) must be less than maximum allowed Sale amount (${1}).",sale.SalePrice, maxAllowedSaleAmount));
-            }
+            // double maxAllowedSaleAmount = soldProductFromDB.SalePrice * 1.4;
+            // if(sale.SalePrice  > maxAllowedSaleAmount){
+            //     errorMessages.Add(string.Format("Sale Price (${0}) after discount(if any) must be less than maximum allowed Sale amount (${1}).",sale.SalePrice, maxAllowedSaleAmount));
+            // }
                 
             sale.SaleCommission = (sale.SalePrice - soldProductFromDB.PurchasePrice) * (soldProductFromDB.CommissionPercentage / 100);
             

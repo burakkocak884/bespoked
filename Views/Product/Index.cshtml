@@ -27,8 +27,8 @@
                               <td class = "medium-column"><a class="btn btn-light" asp-controller="Product" asp-action="Update" asp-route-productId = "@product.productId" >@product.Name</a></td>
                               <td class = "large-column">@product.Manufacturer</td>
                               <td class = "medium-column">@product.Style</td>
-                              <td class = "small-column-number">@product.PurchasePrice</td>
-                              <td class = "small-column-number">@product.SalePrice</td>
+                              <td class = "small-column-number">@product.PurchasePrice.ToString("N2")</td>
+                              <td class = "small-column-number">@product.SalePrice.ToString("N2")</td>
                               <td class = "@quantitiyColumnValueClass">@product.QuantityOnHand</td>
                               <td class = "small-column-number">@product.CommissionPercentage</td>
                             </tr>

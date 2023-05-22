@@ -57,6 +57,12 @@ namespace profisee_project.Controllers
                     endingOfQuarter = "12-31";
                     quarterDescription = string.Format("Fourth Quarter of {0}", reportYear);
                     break;
+
+                case 5:
+                    beginningOfQuarter = "01-01";
+                    endingOfQuarter = "12-31";
+                    quarterDescription = string.Format("All Quarters of {0}", reportYear);
+                    break;
             
             }
             

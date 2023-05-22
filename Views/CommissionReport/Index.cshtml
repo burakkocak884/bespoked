@@ -21,6 +21,7 @@
                     <option value="2">Second</option>
                     <option value="3">Third</option>
                     <option value="4">Fourth</option>
+                    <option value="5">All</option>
                 </select>
                 
                 <select class = "dropdown" name="year" value = "">
@@ -53,8 +54,12 @@
                         <th class = "medium-column">Earned Commission($)</th>
                     </tr>
                 </thead>
+                
                     @if(CommissionItems != null){
+                        <tbody>
+                        @{double total = 0;}
                       @foreach(ComissionReport commission in CommissionItems){
+                          total += @commission.quarterlycommission;
                             <tr >
                                 <td class = "medium-column">@commission.salespersonname</td>
                                 <td class = "medium-column">(@commission.SalesPersonPhoneNumber.Substring(0,3))  @commission.SalesPersonPhoneNumber.Substring(3,3) @commission.SalesPersonPhoneNumber.Substring(6,4)</td>
@@ -62,8 +67,21 @@
                                 <td class = "medium-column-number">@commission.NumberOfSales</td>
                                 <td class = "medium-column-number">@commission.quarterlycommission.ToString("N2")</td>
                             </tr>
-                      }
+                      }   
+                    </tbody>  
+                    <tfoot>
+                        <tr >
+                                    <td class = ""></td>
+                                    <td class = ""></td>
+                                    <td class = ""></td>
+                                    <td class = "total-column">Total Commission Paid</td>
+                                    <td class = "total-column-number">@total.ToString("N2")</td>
+                        </tr> 
+                    </tfoot>                                         
                     }
+                    
+                    
+                    
     </table>
 </div>
     <style>
@@ -102,7 +120,14 @@ width: 20%;
 .medium-column-number{
     width: 20%;
     text-align: right;
-    background-to
+}
+.total-column-number{
+    width: 20%;
+    text-align: right;
+}
+.total-column{
+    width: 20%;
+    text-align: left;
 }
 .tableFixHead {
         overflow-y: auto; /* make the table scrollable if height is more than 200 px  */

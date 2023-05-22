@@ -29,8 +29,8 @@
                               <td class = "medium-column">@sale.SaleCustomerName</td>
                               <td class = "large-column">@sale.ProductDetail</td>
                               <td class = "medium-column">@sale.SalePersonName</td>
-                              <td class = "small-column-number">@sale.SalePrice</td>
-                              <td class = "small-column-number">@Math.Round(sale.SaleCommission, 2)</td>
+                              <td class = "small-column-number">@sale.SalePrice.ToString("N2")</td>
+                              <td class = "small-column-number">@Math.Round(sale.SaleCommission, 2).ToString("N2")</td>
                             </tr>
                       }
                     }
