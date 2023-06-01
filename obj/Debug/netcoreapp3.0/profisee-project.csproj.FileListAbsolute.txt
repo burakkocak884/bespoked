@@ -85,8 +85,12 @@
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Customer/Update.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Discount/Index.cshtml.g.cs
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/Razor/Views/Discount/New.cshtml.g.cs
-/Users/burakkocak/Development/profisee-project/bin/Debug/netcoreapp3.0/profisee-project.StaticWebAssets.xml
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/profisee-project.csproj.AssemblyReference.cache
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/profisee-project.GeneratedMSBuildEditorConfig.editorconfig
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/profisee-project.csproj.CoreCompileInputs.cache
 /Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/profisee-project.genruntimeconfig.cache
+/Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/staticwebassets/profisee-project.StaticWebAssets.Pack.cache
+/Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/staticwebassets/msbuild.profisee-project.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/staticwebassets/msbuild.build.profisee-project.props
+/Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/staticwebassets/msbuild.buildMultiTargeting.profisee-project.props
+/Users/burakkocak/Development/profisee-project/obj/Debug/netcoreapp3.0/staticwebassets/msbuild.buildTransitive.profisee-project.props

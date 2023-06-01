@@ -106,7 +106,7 @@ namespace profisee_project.Controllers
                 double desiredDiscountPercentage = 0;
                 foreach (Discount discount in discountsInHand)
                 {
-                    if(sale.SaleDate >= discount.BeginDate && sale.SaleDate <= discount.EndDate){
+                    if(sale.SaleDate.DayOfYear >= discount.BeginDate.DayOfYear && sale.SaleDate.DayOfYear <= discount.EndDate.DayOfYear){
                         
                         if(desiredDiscountPercentage < discount.DiscountPercentage){
                             desiredDiscountPercentage = discount.DiscountPercentage;

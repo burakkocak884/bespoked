@@ -28,7 +28,9 @@ using profisee_project.Models;
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"271ecce55fb4c422a61730ecd227512dcc180c8f", @"/Views/Sale/New.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"07b935d473af81893352c79cae90a290ae9ed1cb", @"/Views/_ViewImports.cshtml")]
+    #nullable restore
     public class Views_Sale_New : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
+    #nullable disable
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("style", new global::Microsoft.AspNetCore.Html.HtmlString("width: 98%;"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -112,9 +114,9 @@ using profisee_project.Models;
 #line hidden
 #nullable disable
             WriteLiteral("\n\n\n\n<div style=\"width: 80rem;\">\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f6075", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f6119", async() => {
                 WriteLiteral("\n            <div style = \"width: 98%;display: flex;\">\n                        \n                        <select class = \"product-dropdown\" name=\"productId\" placeholder = \"Products\" required>\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f6558", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f6602", async() => {
                     WriteLiteral("Products");
                 }
                 );
@@ -149,7 +151,7 @@ using profisee_project.Models;
 #line default
 #line hidden
 #nullable disable
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f9158", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f9202", async() => {
 #nullable restore
 #line 33 "/Users/burakkocak/Development/profisee-project/Views/Sale/New.cshtml"
                                                                     Write(product.Name);
@@ -206,7 +208,7 @@ using profisee_project.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                </select>\n\n                <select class = \"person-dropdown\" name=\"salesPersonId\" placeholder = \"Sales Associates\" required>\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f12155", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f12199", async() => {
                     WriteLiteral("Sales Associates");
                 }
                 );
@@ -240,7 +242,7 @@ using profisee_project.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f14681", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f14725", async() => {
 #nullable restore
 #line 43 "/Users/burakkocak/Development/profisee-project/Views/Sale/New.cshtml"
                                                                             Write(salesPerson.LastName);
@@ -288,7 +290,7 @@ using profisee_project.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                </select>\n\n                <select class = \"person-dropdown\" name=\"customerId\" placeholder = \"Customers\" required>\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f17291", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f17335", async() => {
                     WriteLiteral("Customers");
                 }
                 );
@@ -322,7 +324,7 @@ using profisee_project.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f19800", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "271ecce55fb4c422a61730ecd227512dcc180c8f19844", async() => {
 #nullable restore
 #line 53 "/Users/burakkocak/Development/profisee-project/Views/Sale/New.cshtml"
                                                                        Write(customer.LastName);
@@ -418,16 +420,26 @@ using profisee_project.Models;
 </style>");
         }
         #pragma warning restore 1998
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.IUrlHelper Url { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.IUrlHelper Url { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.IViewComponentHelper Component { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.IViewComponentHelper Component { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<dynamic> Html { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<dynamic> Html { get; private set; } = default!;
+        #nullable disable
     }
 }
 #pragma warning restore 1591
