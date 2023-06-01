@@ -177,3 +177,8 @@
 /Users/burakkocak/Development/bespoked/obj/Debug/netcoreapp3.0/profisee-project.dll
 /Users/burakkocak/Development/bespoked/obj/Debug/netcoreapp3.0/profisee-project.pdb
 /Users/burakkocak/Development/bespoked/obj/Debug/netcoreapp3.0/profisee-project.genruntimeconfig.cache
+/Users/burakkocak/Development/bespoked/obj/Debug/netcoreapp3.0/staticwebassets/profisee-project.StaticWebAssets.Pack.cache
+/Users/burakkocak/Development/bespoked/obj/Debug/netcoreapp3.0/staticwebassets/msbuild.profisee-project.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/burakkocak/Development/bespoked/obj/Debug/netcoreapp3.0/staticwebassets/msbuild.build.profisee-project.props
+/Users/burakkocak/Development/bespoked/obj/Debug/netcoreapp3.0/staticwebassets/msbuild.buildMultiTargeting.profisee-project.props
+/Users/burakkocak/Development/bespoked/obj/Debug/netcoreapp3.0/staticwebassets/msbuild.buildTransitive.profisee-project.props
