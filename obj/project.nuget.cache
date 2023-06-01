@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0HbTf9MMBZi6kEpAK9eq3alZfQk5bz9CkTDuM8bpqQXIGaGAfXzvACAx4CRZszr5r1lycr2ENZKRQbu4+i8FKw==",
+  "dgSpecHash": "g+AW4hD4EM8zBYJpFpZ9xyBRvSnWp8BCM1QN3ovSE/z74vULoRGVPIp3aliwtjm+x9Fpk2lA8ai4G/FNckQhGw==",
   "success": true,
-  "projectFilePath": "/Users/burakkocak/Development/profisee-project/profisee-project.csproj",
+  "projectFilePath": "/Users/burakkocak/Development/bespoked/profisee-project.csproj",
   "expectedPackageFiles": [
     "/Users/burakkocak/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.0/microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "/Users/burakkocak/.nuget/packages/microsoft.bcl.hashcode/1.1.0/microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

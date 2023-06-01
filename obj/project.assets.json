@@ -6074,11 +6074,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/burakkocak/Development/profisee-project/profisee-project.csproj",
+      "projectUniqueName": "/Users/burakkocak/Development/bespoked/profisee-project.csproj",
       "projectName": "profisee-project",
-      "projectPath": "/Users/burakkocak/Development/profisee-project/profisee-project.csproj",
+      "projectPath": "/Users/burakkocak/Development/bespoked/profisee-project.csproj",
       "packagesPath": "/Users/burakkocak/.nuget/packages/",
-      "outputPath": "/Users/burakkocak/Development/profisee-project/obj/",
+      "outputPath": "/Users/burakkocak/Development/bespoked/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/burakkocak/.nuget/NuGet/NuGet.Config"
