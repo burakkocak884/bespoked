@@ -20,12 +20,12 @@
                         @foreach(Discount discount in discounts){
                           string discountStatus = "Active";
                           string discountStatusClassName = "small-column-active"; 
-                          if(discount.EndDate.DayOfYear < DateTime.Now.DayOfYear){
+                          if(discount.EndDate.Day < DateTime.Now.Day){
                               discountStatus = "Expired";
                               discountStatusClassName = "small-column-expired";
                           }
 
-                          if(discount.BeginDate.DayOfYear > DateTime.Now.DayOfYear){
+                          if(discount.BeginDate.Day > DateTime.Now.Day){
                               discountStatus = "Will be Active soon";
                               discountStatusClassName = "small-column-future";
                           }
