@@ -15,16 +15,17 @@
                         <th class = "medium-column">Style</th>
                         <th class = "small-column">Purchase $</th>
                         <th class = "small-column">Sale $</th>
-                        <th class = "small-column">Stock</th>
+                        <th class = "small-column">Available</th>
                         <th class = "small-column">Comm %</th>
                     </tr>
                   </thead>
                     @if(products != null){
                       @foreach(Product product in products){
                             string quantitiyColumnValueClass = product.QuantityOnHand == 0 ? "small-column-number-zero" : "small-column-number";
+                            string canBeDeleted = product.QuantityOnHand == 0? "display:block": "display:none";
 
                             <tr>
-                              <td class = "medium-column"><a class="btn btn-light" asp-controller="Product" asp-action="Update" asp-route-productId = "@product.productId" >@product.Name</a></td>
+                              <td class = "medium-column"><a class="btn btn-light" asp-controller="Product" asp-action="Update" asp-route-productId = "@product.productId">@product.Name</a></td>
                               <td class = "large-column">@product.Manufacturer</td>
                               <td class = "medium-column">@product.Style</td>
                               <td class = "small-column-number">@product.PurchasePrice.ToString("N2")</td>

@@ -23,7 +23,7 @@ namespace profisee_project.Controllers
 
         public IActionResult Index(int selectedQuarter, string year)
         {
-            DateTime currentTime = DateTime.Now;
+            DateTime currentTime = DateTime.Today;
             string beginningOfQuarter = string.Empty;
             string endingOfQuarter = string.Empty;
             string quarterDescription = string.Empty;
@@ -79,6 +79,7 @@ namespace profisee_project.Controllers
                                             ",'{0}' AS quarterDescription " +
                                             ",Count(sale.\"saleId\") AS NumberOfSales " +
                                             ",staff.\"salesPersonId\" AS comissionReportId " +
+                                            ",SUM(sale.\"SalePrice\") AS SaleSum " +
                                         "FROM \"Sales\" sale " +
                                         "JOIN \"SalesPeople\" staff on staff.\"salesPersonId\" = sale.\"salesPersonId\" " +
                                         "Where sale.\"SaleDate\" BETWEEN '{1}-{2}' AND '{1}-{3}' " +

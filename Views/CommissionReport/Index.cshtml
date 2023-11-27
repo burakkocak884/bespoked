@@ -50,32 +50,42 @@
                         <th class = "medium-column">Sales Person</th>
                         <th class = "medium-column">Phone Number</th>
                         <th class = "medium-column">Description</th>
-                        <th class = "medium-column">Number of Sales</th>
+                        <th class = "small-column">Sales Count </th>
+                        <th class = "small-column">Sales Amount</th>
                         <th class = "medium-column">Earned Commission($)</th>
                     </tr>
                 </thead>
                 
                     @if(CommissionItems != null){
                         <tbody>
-                        @{double total = 0;}
-                      @foreach(ComissionReport commission in CommissionItems){
-                          total += @commission.quarterlycommission;
+                        @{
+                            double totalCommission = 0;
+                            double totalSaleSum = 0;
+                            int totalNumberOfSales = 0;
+                        
+                        foreach(ComissionReport commission in CommissionItems){
+                          totalCommission += @commission.quarterlycommission;
+                          totalSaleSum += @commission.SaleSum;
+                          totalNumberOfSales += @commission.NumberOfSales;
                             <tr >
                                 <td class = "medium-column">@commission.salespersonname</td>
                                 <td class = "medium-column">(@commission.SalesPersonPhoneNumber.Substring(0,3))  @commission.SalesPersonPhoneNumber.Substring(3,3) @commission.SalesPersonPhoneNumber.Substring(6,4)</td>
                                 <td class = "medium-column">@commission.quarterDescription</td>
-                                <td class = "medium-column-number">@commission.NumberOfSales</td>
+                                <td class = "small-column-number">@commission.NumberOfSales</td>
+                                <td class = "small-column-number">@commission.SaleSum.ToString("N2")</td>
                                 <td class = "medium-column-number">@commission.quarterlycommission.ToString("N2")</td>
                             </tr>
-                      }   
+                        } 
+                    }  
                     </tbody>  
                     <tfoot>
                         <tr >
-                                    <td class = ""></td>
-                                    <td class = ""></td>
-                                    <td class = ""></td>
-                                    <td class = "total-column">Total Commission Paid</td>
-                                    <td class = "total-column-number">@total.ToString("N2")</td>
+                                    <td class = "" type="hidden"></td>
+                                    <td class = "" type="hidden"></td>
+                                    <td class = "medium-column-footer">Total</td>
+                                    <td class = "small-total-column-number-footer">@totalNumberOfSales</td>
+                                    <td class = "small-total-column-number-footer">@totalSaleSum.ToString("N2")</td>
+                                    <td class = "medium-column-number-footer">@totalCommission.ToString("N2")</td>
                         </tr> 
                     </tfoot>                                         
                     }
@@ -113,19 +123,36 @@
     width: 36%;
     margin: 0.5%;
 }
-
+.small-column{
+    width: 10%;
+}
+.small-column-number{
+    width: 10%;
+    text-align: right;
+}
 .medium-column{
 width: 20%;
+}
+.medium-column-footer{
+    width: 20%;
+    font-weight: bold;
 }
 .medium-column-number{
     width: 20%;
     text-align: right;
 }
-.total-column-number{
+.medium-column-number-footer{
     width: 20%;
     text-align: right;
+    font-weight: bold;
 }
-.total-column{
+.small-total-column-number-footer{
+    width: 10%;
+    text-align: right;
+    font-weight: bold;
+
+}
+.small-total-column{
     width: 20%;
     text-align: left;
 }

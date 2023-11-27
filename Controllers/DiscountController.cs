@@ -66,7 +66,7 @@ namespace profisee_project.Controllers
                errorMessages.Add("The same discount already exists.");
             }
 
-            if(discount.BeginDate.Date < DateTime.Now.Date){
+            if(discount.BeginDate.Date < DateTime.Today.Date){
                 errorMessages.Add("Discount Start date can not be a Date in the past.");
             }
 

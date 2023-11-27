@@ -31,12 +31,12 @@
             </div>
         </form>
 
-
-        <form style="width: 98%;" asp-controller="SalesPerson" asp-action= "Delete">
-            <input style = "width: 98%;margin: 0.5%;" type="submit" value="Delete @person.FirstName @person.LastName">
-            <input  type="hidden" id="salesPersonId" name="salesPersonId" value="@person.salesPersonId" >
-
-        </form>
+        @if(person.TerminationDate < DateTime.Today && person.TerminationDate.ToString("yyyy-MM-dd") != "0001-01-01" ){
+            <form style="width: 98%;" asp-controller="SalesPerson" asp-action= "Delete">
+                <input class="btn btn-outline-danger" style = "width: 98%;margin: 0.5%;" type="submit" value="Delete @person.FirstName @person.LastName">
+                <input  type="hidden" id="salesPersonId" name="salesPersonId" value="@person.salesPersonId">
+            </form>
+        }
 </div>
 
     }

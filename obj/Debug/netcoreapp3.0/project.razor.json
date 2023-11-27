@@ -14359,7 +14359,7 @@
         }
       }
     ],
-    "CSharpLanguageVersion": 1100
+    "CSharpLanguageVersion": 1200
   },
   "RootNamespace": "profisee_project",
   "Documents": [

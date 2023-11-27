@@ -68,5 +68,16 @@ namespace profisee_project.Controllers
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Delete(int productId){
+            
+            Product productToBeRemoved = _dbContext.Products.ToList().Find(p => p.productId == productId);
+            if(productToBeRemoved != null){
+                _dbContext.Remove(productToBeRemoved);
+                _dbContext.SaveChanges();
+            }
+            
+            return RedirectToAction("Index");
+        }
     }
 }

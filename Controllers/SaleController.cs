@@ -56,7 +56,7 @@ namespace profisee_project.Controllers
         
         public IActionResult Index()
         {
-            ViewBag.Sales = GetSales<Sale>().OrderByDescending(sale => sale.SaleDate);
+            ViewBag.Sales = GetSales<Sale>().OrderByDescending(sale => sale.saleId);
             ViewBag.SalesCount = GetSales<Sale>().Count();
             return View();
         }
@@ -65,7 +65,7 @@ namespace profisee_project.Controllers
         {
             ViewBag.Products = GetProducts<Product>().OrderBy(product => product.Name);
             ViewBag.Customers = GetCustomers<Customer>().OrderBy(person => person.LastName);
-            ViewBag.SalesPeople = GetSalesPeople<SalesPerson>().FindAll(person => person.TerminationDate == DateTime.MinValue).OrderBy(person => person.LastName);
+            ViewBag.SalesPeople = GetSalesPeople<SalesPerson>().Where(person => ((person.TerminationDate == DateTime.MinValue || person.TerminationDate >= DateTime.Today) &&  person.StartDate <= DateTime.Today)).OrderBy(person => person.LastName);
             ViewBag.Discounts = GetDiscounts<Discount>();
             ViewBag.ErrorMessages = errorMessages; 
 
@@ -74,7 +74,7 @@ namespace profisee_project.Controllers
 
         public IActionResult Save(Sale sale)
         {
-            sale.SaleDate = DateTime.Now;
+            sale.SaleDate = DateTime.Today;
             List<string> errorMessages = new List<string>();
             Product soldProductFromDB = _dbContext.Products.ToList().Find(p => p.productId == sale.productId);
             SalesPerson seller = _dbContext.SalesPeople.ToList().Find(p => p.salesPersonId == sale.salesPersonId);
@@ -106,7 +106,7 @@ namespace profisee_project.Controllers
                 double desiredDiscountPercentage = 0;
                 foreach (Discount discount in discountsInHand)
                 {
-                    if(sale.SaleDate.Day >= discount.BeginDate.Day && sale.SaleDate.Day <= discount.EndDate.Day){
+                    if(sale.SaleDate >= discount.BeginDate && sale.SaleDate <= discount.EndDate){
                         
                         if(desiredDiscountPercentage < discount.DiscountPercentage){
                             desiredDiscountPercentage = discount.DiscountPercentage;

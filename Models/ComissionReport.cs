@@ -10,5 +10,6 @@ namespace profisee_project.Models
         public double quarterlycommission {get;set;}
         public string quarterDescription {get;set;}
         public int NumberOfSales {get;set;}
+        public double SaleSum {get;set;}
     }
 }

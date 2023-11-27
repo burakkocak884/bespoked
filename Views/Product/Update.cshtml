@@ -29,6 +29,12 @@
                 <input style = "width: 98%;margin: 0.5%;" type="submit" value="Update Product Information">
             </div>
         </form>
+        @if(product.QuantityOnHand == 0){
+            <form style="width: 98%;" asp-controller="Product" asp-action= "Delete">
+                <input class="btn btn-outline-danger" style = "width: 98%;margin: 0.5%;" type="submit" value="Delete @product.Name">
+                <input  type="hidden" id="productId" name="productId" value="@product.productId" >
+            </form>
+        }
 </div>
 
     }
