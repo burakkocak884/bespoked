@@ -17,11 +17,11 @@
                 <input style = "width: 64%;margin: 0.5%;" type="text" id="Address" name="Address" placeholder = "Address" value = '@person.Address' required><br><br>
             </div>
             <div style = "width: 98%;display: flex;">
-                <input style = "width: 19%;margin: 0.5%;" type="text" id="PhoneNumber" name="PhoneNumber" maxlength="10" minlength="10" value = '@person.PhoneNumber' placeholder = "Phone Number" required><br><br>
-                <label class = "date-label" for="StartDate">Start Date</label>
-                <input style = "width: 24%;margin: 0.5%;" type="date" id="StartDate" name="StartDate" placeholder = "Start Date"  value = '@personStartDate' required><br><br>
-                <label class = "date-label" for="TerminationDate">Termination Date</label>
-                <input style = "width: 24%;margin: 0.5%;" type="date" id="TerminationDate" name="TerminationDate" value = '@personTerminationDate' placeholder = "Termination Date" ><br><br>
+                <input style = "width: 20%;margin: 0.5%;" type="text" id="PhoneNumber" name="PhoneNumber" maxlength="10" minlength="10" value = '@person.PhoneNumber' placeholder = "Phone Number" required><br><br>
+                <label class = "date-label" for="StartDate" style = "margin-left:42px;">Begin</label>
+                <input style = "width: 30%;margin: 0.5%;" type="date" id="StartDate" name="StartDate" placeholder = "Start Date"  value = '@personStartDate' required><br><br>
+                <label class = "date-label" for="TerminationDate" style = "margin-left:42px;">End</label>
+                <input style = "width: 30%;margin: 0.5%;" type="date" id="TerminationDate" name="TerminationDate" value = '@personTerminationDate' placeholder = "Termination Date" ><br><br>
 
                 <input  type="hidden" id="managerId" name="managerId" value="1"> 
                 <input  type="hidden" id="salesPersonId" name="salesPersonId" value="@person.salesPersonId">

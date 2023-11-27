@@ -19,7 +19,7 @@
                     @if(salesPeople != null){
                       @foreach(SalesPerson person in salesPeople){
                         string termDate = @person.TerminationDate.ToString() == "1/1/0001 12:00:00 AM"? @person.StartDate > DateTime.Today? "Future Employee" : "Current Employee": @person.TerminationDate.ToString("MMM dd yyyy");
-                        string termDateColor = (@termDate == @person.TerminationDate.ToString("MMM dd yyyy") && @person.TerminationDate <= DateTime.Today)? "red": string.Empty;
+                        string termDateColor = (@termDate == @person.TerminationDate.ToString("MMM dd yyyy") && @person.TerminationDate <= DateTime.Today)? "red": termDate == "Current Employee"? "green" : string.Empty;
                             <tr>
                               <td class = "medium-column"><a class="btn btn-light" asp-controller="SalesPerson" asp-action="Update" asp-route-salesPersonId = "@person.salesPersonId">@person.LastName, @person.FirstName</a></td>
                               <td class = "large-column">@person.Address</td>

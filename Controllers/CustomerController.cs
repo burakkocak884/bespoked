@@ -40,6 +40,7 @@ namespace profisee_project.Controllers
         public IActionResult Save(Customer customer){
 
             string errorMessage = string.Empty;
+            customer.StartDate = DateTime.Today;
             Customer duplicateCustomer = _dbContext.Customers.ToList().Find(c => c.PhoneNumber == customer.PhoneNumber);
             if(duplicateCustomer == null){
                 _dbContext.Customers.Add(customer);
